@@ -731,6 +731,8 @@ require('lazy').setup({
       require('mason-lspconfig').setup {
         ensure_installed = {}, -- explicitly set to an empty table (Kickstart populates installs via mason-tool-installer)
         automatic_installation = false,
+        automatic_setup = false, -- Disable automatic setup to prevent conflicts with manual handler configuration
+        automatic_enable = false, -- Workaround for nil 'enable' function error
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -984,7 +986,7 @@ require('lazy').setup({
   --  Here are some example plugins that I've included in the Kickstart repository.
   --  Uncomment any of the lines below to enable them (you will need to restart nvim).
   --
-  require 'kickstart.plugins.debug',
+  --require 'kickstart.plugins.debug',
   require 'kickstart.plugins.indent_line',
   require 'kickstart.plugins.lint',
   require 'kickstart.plugins.autopairs',
